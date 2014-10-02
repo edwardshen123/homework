@@ -17,4 +17,29 @@ public class Shapes {
 	}
 	return s;
     }
+
+    public String tri1(int h) {
+	String output = "";
+	for (int y = 0; y < h; y++) {
+	    for (int x = 0; x < y + 1; x++) {
+		output+="*";
+	    }
+	    output+="\n";
+	}
+	return output;
+    }
+
+    public String tri2(int h) {
+	String output = "";
+	for (int y = 0; y < h; y++) {
+	    for (int space = 0; space < h - (y + 1); space++) {
+		output+=" ";
+	    }
+	    for (int x = 0; x < y + 1; x++) {
+		output+="*";
+	    }
+	    output+="\n";
+	}
+	return output;
+    }
 }
