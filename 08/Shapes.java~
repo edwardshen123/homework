@@ -1,0 +1,74 @@
+
+
+public class Shapes {
+
+    public String box(int r, int c){
+	String s= "";
+	int row = 0;
+	int col;
+	while (row<r){
+	    col = c;
+	    while (col>0){
+		s = s + "*";
+		col=col-1;
+	    }
+	    s=s+"\n";
+	    row=row+1;
+	}
+	return s;
+    }
+
+    public String tri3(int h) {
+	String output = "";
+	int sideSpaces;
+	int starNum = 1;
+	for (int y = 0; y < h; y++) {
+	    sideSpaces = h - y + 1;
+	    for (int spaceLeft = 0; spaceLeft < sideSpaces; spaceLeft++) {
+		output+=" ";
+	    }
+	    for (int starCounter = 0; starCounter < starNum; starCounter++) {
+		output+="*";
+	    }
+	    starNum+=2;
+	    for (int spaceRight = 0; spaceRight < sideSpaces; spaceRight++) {
+		output += " ";
+	    }
+	    output += "\n";
+	}
+	return output;
+    }
+
+    public String tri4(int h){
+	String output = "";
+	for (int height = h; height > 0; height--) {
+	    for (int spaceLeft = 0; spaceLeft < h-height; spaceLeft++){
+		output += " ";
+	    }
+	    for (int stars = 0; stars < height; stars++) {
+		output += "*";
+	    }
+	    output += "\n";
+	}
+	return output;
+    }
+
+    public String frame(int height, int width) {
+	String output = "";
+	String compressors = "";
+	String constrictors = "";
+	for (int w = 0; w < width; w++) {
+	    compressors += "*";
+	}
+	for (int h = 0; h < height - 2; h++) {
+	    constrictors += "*";
+	    for (int spaceCounter = 0; spaceCounter < width - 2; spaceCounter++) {
+		constrictors += " ";
+	    }
+	    constrictors += "*\n";
+	}
+	output += compressors + "\n" + constrictors + compressors + "\n";
+	return output;
+    }
+	
+}
