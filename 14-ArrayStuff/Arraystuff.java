@@ -44,6 +44,16 @@ public class Arraystuff {
 	}
 	return max;
     }
+    public int freq(i) {
+	int ref = a[i];
+	int result = 0;
+	for (int c = 0; c < a.length; c++) {
+	    if (a[i] == a[c]) {
+		result++;
+	    }
+	}
+	return result;
+    }
 
     public static void main(String[] args) {
 	Arraystuff s = new Arraystuff();
