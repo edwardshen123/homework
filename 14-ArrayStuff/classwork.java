@@ -95,3 +95,41 @@ public boolean canBalance(int[] nums) {
   }
   return false;
 }
+
+public int maxMirror(int[] nums) {
+  if (nums.length == 1) {
+    return 1;
+  }
+  int maxVal = 0;
+  int[] revArray = new int[nums.length];
+  for (int revCounter = 0; revCounter < nums.length; revCounter++) {
+    revArray[revCounter] = nums[nums.length - revCounter - 1];
+  }
+  for (int base = 0; base < nums.length; base++) {
+    for (int len = 1; len + base - 1 < nums.length; len++) {
+      int[] fwdArray = new int[len];
+      for (int start = 0; start < len; start++) {
+        fwdArray[start] = nums[start + base];
+      }
+      boolean containArray = false;
+      for (int raCounter = 0; raCounter < nums.length - len + 1; raCounter++) {
+        for (int aCounter = 0; aCounter < len; aCounter++) {
+          if (fwdArray[aCounter] != revArray[aCounter + raCounter]) {
+            break;
+          }
+          if (aCounter + 1 == len) {
+            containArray = true;
+            if (len > maxVal) {
+              maxVal = len;
+            }
+          }
+        }
+        if (containArray) {
+          break;
+        }
+      }
+    }
+  }
+  return maxVal;
+}
+
