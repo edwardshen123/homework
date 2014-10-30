@@ -35,14 +35,63 @@ public boolean tripleUp(int[] nums) {
     }
 }
 
-
 public int[] seriesUp(int n) {
-    int[] result = new int[n * (n+1) / 2];
-    int place = 0;
-    for (int i=1;i<=n+1;i++){
-	for (int j=1;j<i;j++){
-	    result[place++]=j;
-	}
+	int[] result = new int[n * (n+1) / 2];
+	int place = 0;
+		for (int i=1;i<=n+1;i++){
+			for (int j=1;j<i;j++){
+				result[place++]=j;
+			}
+		}
+	return result;
+}
+
+public int sum67(int[] nums) {
+  int result = 0;
+  for (int c = 0; c < nums.length; c++) {
+    if (nums[c] != 6) {
+    result += nums[c];
+    } else {
+    for (int d = c; d < nums.length; d++) {
+    if (nums[d] == 7) {
+    c = d;
+    break;
     }
-    return result;
+    }
+    }
+  }
+  return result;
+}
+
+public int[] tenRun(int[] nums) {
+  for (int c = 0; c < nums.length; c++) {
+  if (nums[c]%10 == 0) {
+  int chgNum = nums[c];
+  for (int e = c + 1; e < nums.length; e++) {
+  if (nums[e]%10 == 0) {
+  c = e - 1;
+  break;
+  }
+  nums[e] = chgNum;
+  }
+  }
+  }
+  return nums;
+}
+
+public boolean canBalance(int[] nums) {
+  for (int c = 0; c < nums.length; c++) {
+  int leftNum = 0;
+  int rightNum = 0;
+  for (int left = c; left >= 0; left--) {
+  leftNum += nums[left];
+  }
+  for (int right = c + 1; right < nums.length; right++) {
+  rightNum += nums[right];
+  }
+  if (leftNum == rightNum) {
+  return true;
+  } 
+  }
+  return false;
 }
