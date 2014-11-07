@@ -1,0 +1,10 @@
+public class Sarray {
+    private Object[] data;
+
+    public Sarray() {
+	data = new Object[10];
+    }
+
+    public void add(int i) {
+    }
+}

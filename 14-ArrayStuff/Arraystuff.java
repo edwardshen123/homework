@@ -25,26 +25,26 @@ public class Arraystuff {
 	}
 	return s;
     }
-    public int find(int value) {
+    public int find(int value, int[] array) {
 	int index = -1;
-	for (int c = 0; c < a.length; c++) {
-	    if (a[c] == value) {
+	for (int c = 0; c < array.length; c++) {
+	    if (array[c] == value) {
 		index = c;
 		break;
 	    }
 	}
 	return index;
     }
-    public int maxVal() {
+    public int maxVal(int[] array) {
 	int max = -1;
-	for (int c = 0; c < a.length; c++) {
-	    if (a[c] > max) {
-		max = a[c];
+	for (int c = 0; c < array.length; c++) {
+	    if (array[c] > max) {
+		max = array[c];
 	    }
 	}
 	return max;
     }
-    public int freq(i) {
+    public int freq(int i, int[] a) {
 	int ref = a[i];
 	int result = 0;
 	for (int c = 0; c < a.length; c++) {
@@ -54,11 +54,36 @@ public class Arraystuff {
 	}
 	return result;
     }
+    public int mode(int[] A) {
+	int[] freq = new int[A.length];
+	for (int i = 0; i < A.length; i++) {
+	    freq[i] = freq(i, A);
+	}
+	int modePos = 0;
+	int temp = 0;
+	for (int c = 0; c < freq.length; c++) {
+	    if (freq[c] > temp) {
+		temp = freq[c];
+		modePos = c;
+	    }
+	}
+	return A[modePos];
+    }
+    public int improvMode(int[] A) {
+	int[] bucket = new int[maxVal(A) + 1];
+	for (int c = 0; c < A.length; c++) {
+	    bucket[A[c]]++;
+	}
+	return A[find(maxVal(bucket), bucket)];
+    }
 
     public static void main(String[] args) {
 	Arraystuff s = new Arraystuff();
-	System.out.println(s);
-	System.out.println(s.maxVal());
-	System.out.println(s.find(100));
+	Random randInt = new Random();
+	int[] ran = new int[100];
+	for (int i = 0; i < 100; i++) {
+	    ran[i] = randInt.nextInt(20);
+	}
+	System.out.println(s.improvMode(ran));
     }
 }
