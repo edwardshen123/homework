@@ -62,6 +62,7 @@ public class Sarray {
 		dataCounter++;
 	    }
 	    data = temp;
+	    last--;
 	    return item;
 	}
     }
