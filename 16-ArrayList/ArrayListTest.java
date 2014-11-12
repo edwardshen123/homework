@@ -1,0 +1,19 @@
+import java.util.ArrayList;
+import java.util.Random;
+public class ArrayListTest {
+    public void removeAdj(ArrayList al) {
+	for (int c = 0; c < al.size(); c++) {
+	    while (al.get(c) == al.get(c++)) {
+		al.remove(c++);
+	    }
+	}
+    }
+    public static void main(String[] args) {
+	ArrayListTest test = new ArrayListTest();
+	ArrayList<Integer> al = new ArrayList<Integer>();
+	Random rand = new Random();
+	for (int c = 0; c < al.size(); c++) {
+	}
+	
+    }
+}
