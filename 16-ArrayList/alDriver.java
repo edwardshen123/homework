@@ -13,7 +13,7 @@ public class alDriver {
 	    n.add(n.remove(rand.nextInt(size)));
 	}
     }
-    public void randomize(int[] n, char type) {
+    public void randomize(int[] n) {
 	//Time & Space Efficient (Array)
 	int temp;
 	int loc;
@@ -29,12 +29,14 @@ public class alDriver {
 	alDriver controller = new alDriver();
 	
 	int[] arry = new int[Integer.parseInt(args[0])];
-	ArrayList<Integer> arryList = new ArrayList<Integer>();
+	//ArrayList<Integer> arryList = new ArrayList<Integer>();
 	for (int c = 0; c < arry.length; c++) {
 	    arry[c] = c;
-	    arryList.add(c);
+	    //arryList.add(c);
 	}
-	controller.randomize(arryList);
+	//controller.randomize(arryList);
 	//System.out.println(arryList);
+	controller.randomize(arry);
+	System.out.println(Arrays.toString(arry));
     }
 }
