@@ -7,51 +7,34 @@ public class alDriver {
     private Random rand = new Random();
     
     public void randomize(ArrayList<Integer> n) {
-	int loc = n.size()/2;
 	//Time & Space Efficient (ArrayList)
+	int size = n.size() - 1;
 	for (int c = 0; c < n.size(); c++) {
-	    int next = rand.nextInt(n.size());
-	    if (next == loc && n.size != 1) {
-		n.add(next - 1, n.remove(loc));
-	    } else {
-		n.add(next, n.remove(loc));
-	    }
+	    n.add(n.remove(rand.nextInt(size)));
 	}
     }
     public void randomize(int[] n, char type) {
-	//Time Efficient (Array)
-	if (type == 't') {
-	    for (int counter = 0; counter < n.length/2; counter++) {
-		int locONE = rand.nextInt(n.length);
-		int locTWO = rand.nextInt(n.length);
-		if (locONE == locTWO) {
-		    if (locONE == 0) {
-			locONE++;
-		    } else {
-			locONE--;
-		    }
-		}
-		int valONE = n[locONE];
-		int valTWO = n[locTWO];
-		n[locONE] = valTWO;
-		n[locTWO] = valONE;
-	    }
-	}
-	//Space Efficient (Array)
-	if (type == 's') {
-	    
+	//Time & Space Efficient (Array)
+	int temp;
+	int loc;
+	int last = n.length - 1;
+	for (int c = 0; c < n.length; c++) {
+	    loc = rand.nextInt(n.length - 1);
+	    temp = n[loc];
+	    n[loc] = n[last];
+	    n[last] = temp;
 	}
     }
     public static void main(String[] args) {
 	alDriver controller = new alDriver();
 	
-	int[] arry = new int[10];
+	int[] arry = new int[Integer.parseInt(args[0])];
 	ArrayList<Integer> arryList = new ArrayList<Integer>();
 	for (int c = 0; c < arry.length; c++) {
 	    arry[c] = c;
 	    arryList.add(c);
 	}
-	controller.randomize(arryList, 't', rand);
-	System.out.println(arryList);
+	controller.randomize(arryList);
+	//System.out.println(arryList);
     }
 }
