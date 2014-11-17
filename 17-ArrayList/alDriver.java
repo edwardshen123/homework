@@ -6,13 +6,21 @@ public class alDriver {
 
     private Random rand = new Random();
     
+    //Takes Longer than array
     public void randomize(ArrayList<Integer> n) {
 	//Time & Space Efficient (ArrayList)
 	int size = n.size() - 1;
+	int temp;
+	int loc;
 	for (int c = 0; c < n.size(); c++) {
-	    n.add(n.remove(rand.nextInt(size)));
+	    loc = rand.nextInt(size);
+	    temp = n.get(loc);
+	    n.set(loc, n.get(c));
+	    n.set(c, temp);
 	}
     }
+
+    //Faster than arrayList
     public void randomize(int[] n) {
 	//Time & Space Efficient (Array)
 	int temp;
@@ -25,18 +33,19 @@ public class alDriver {
 	    n[last] = temp;
 	}
     }
+
     public static void main(String[] args) {
 	alDriver controller = new alDriver();
 	
-	int[] arry = new int[Integer.parseInt(args[0])];
-	//ArrayList<Integer> arryList = new ArrayList<Integer>();
-	for (int c = 0; c < arry.length; c++) {
-	    arry[c] = c;
-	    //arryList.add(c);
+	//int[] arry = new int[Integer.parseInt(args[0])];
+	ArrayList<Integer> arryList = new ArrayList<Integer>();
+	for (int c = 0; c < Integer.parseInt(args[0]); c++) {
+	    //arry[c] = c;
+	    arryList.add(c);
 	}
-	//controller.randomize(arryList);
+	controller.randomize(arryList);
 	//System.out.println(arryList);
-	controller.randomize(arry);
-	System.out.println(Arrays.toString(arry));
+	//controller.randomize(arry);
+	//System.out.println(Arrays.toString(arry));
     }
 }
