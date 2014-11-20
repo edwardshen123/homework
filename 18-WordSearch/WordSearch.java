@@ -59,6 +59,30 @@ public class WordSearch{
 	addWordH(reverse, row, col);
     }
 
+    public void addWordV(String w, int row, int col) {
+	int len = w.length();
+	if (row+len<boardRow && row>=0 && col<boardCol && col>=0) {
+	    int r = row, c = col;
+	    boolean canAdd = true;
+	    for (int counter=0; counter<len; counter++) {
+		if (board[r+counter][c] != '.') {
+		    canAdd = false;
+		    break;
+		}
+	    }
+	    if (canAdd) {
+		for (int i=0;i<len;i++) {
+		    board[r+i][c] = w.charAt(i);
+		}
+	    }
+	}
+    }
+
+    public void addWordVR(String w, int row, int col) {
+	String reverse = new StringBuilder(w).reverse().toString();
+	addWordV(reverse, row, col);
+    }
+
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 	System.out.println(w);
@@ -68,6 +92,7 @@ public class WordSearch{
 	w.addWordH("look",2,5);
 	w.addWordH("hello",100,5);
 	w.addWordH("hello",30,555);
+	w.addWordV("hi",2,4);
 				
 	System.out.println(w);
     }
