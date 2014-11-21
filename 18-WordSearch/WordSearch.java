@@ -85,6 +85,56 @@ public class WordSearch{
 	addWordV(reverse, row, col);
     }
 
+    public void addWordDRD(String w, int row, int col) {
+        int len = w.length();
+	if (row+len<boardRow && row>=0 && col+len<boardCol && col>=0) {
+	    int r = row, c = col;
+	    boolean canAdd = false;
+	    for (int counter=0; counter<len; counter++) {
+		char item = board[r+counter][c+counter];
+		if (item == '.' || item == w.charAt(counter)) {
+		    canAdd = true;
+		    break;
+		}
+	    }
+	    if (canAdd) {
+		for (int i=0;i<len;i++) {
+		    board[r+i][c+i] = w.charAt(i);
+		}
+	    }
+	}
+    }
+
+    public void addWordDRR(String w, int row, int col) {
+	String reverse = new StringBuilder(w).reverse().toString();
+	addWordDRD(reverse, row, col);
+    }
+
+    public void addWordDLD(String w, int row, int col) {
+	int len = w.length();
+	if (row+len<boardRow && row>=0 && col-len<boardCol && col>=0) {
+	    int r = row, c = col;
+	    boolean canAdd = false;
+	    for (int counter=0; counter<len; counter++) {
+		char item = board[r+counter][c-counter];
+		if (item == '.' || item == w.charAt(counter)) {
+		    canAdd = true;
+		    break;
+		}
+	    }
+	    if (canAdd) {
+		for (int i=0;i<len;i++) {
+		    board[r+i][c-i] = w.charAt(i);
+		}
+	    }
+	}
+    }
+
+    public void addWordDLR(String w, int row, int col) {
+	String reverse = new StringBuilder(w).reverse().toString();
+	addWordDLD(reverse, row, col);
+    }
+
     public static void main(String[] args) {
 	WordSearch w = new WordSearch();
 	System.out.println(w);
