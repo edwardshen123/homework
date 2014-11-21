@@ -1,4 +1,5 @@
 import java.lang.StringBuilder;
+import java.util.Random;
 /**
  * Creates a word search puzzle
  *
@@ -135,17 +136,46 @@ public class WordSearch{
 	addWordDLD(reverse, row, col);
     }
 
-    public static void main(String[] args) {
-	WordSearch w = new WordSearch();
-	System.out.println(w);
-	w.addWordH("hello",3,5);
-	w.addWordH("look",3,8);
-	w.addWordH("look",3,5);
-	w.addWordH("look",2,5);
-	w.addWordH("hello",100,5);
-	w.addWordH("hello",30,555);
-	w.addWordV("hi",2,4);
-				
-	System.out.println(w);
+    public void addWord() {
+	Scanner sc = null;
+	try {
+	    sc = new Scanner(new File("words.txt"));
+	} catch (Exception e) {
+	    System.out.println("Can't open file");
+	    System.exit(0);
+	}
+	while (sc.hasNext()) {
+	    Random randInt = new Random();
+	    int caseNum = randInt.nextInt(7);
+	    String word = sc.next();
+	    int wordLen = word.length();
+	    switch (caseNum) {
+	    case 0:
+		addWordH(word, randInt.nextInt(boardRow), randInt.nextInt(boardCol-wordLen));
+		break;
+	    case 1:
+		addWordHR(word, randInt.nextInt(boardRow), randInt.nextInt(boardCol-wordLen));
+		break;
+	    case 2:
+		addWordV(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol));
+		break;
+	    case 3:
+		addWordVR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol));
+		break;
+	    case 4:
+		addWordDRD(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen));
+		break;
+	    case 5:
+		addWordDLD(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen) + wordLen);
+		break;
+	    case 6:
+		addWordDRR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen));
+		break;
+	    case 7:
+		addWordDLR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen) + wordLen);
+		break;
+	    default:
+	    }
+	}
     }
 }
