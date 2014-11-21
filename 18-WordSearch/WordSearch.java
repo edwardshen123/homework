@@ -39,10 +39,11 @@ public class WordSearch{
 	int len = w.length();
 	if (col+len<boardCol && col>=0 && row<boardRow && row>=0) {
 	    int r = row, c = col;
-	    boolean canAdd = true;
+	    boolean canAdd = false;
 	    for (int counter=0; counter<len; counter++) {
-		if (board[r][c+counter] != '.') {
-		    canAdd = false;
+		char item = board[r][c+counter];
+		if (item == '.' || item == w.charAt(counter)) {
+		    canAdd = true;
 		    break;
 		}
 	    }
@@ -63,10 +64,11 @@ public class WordSearch{
 	int len = w.length();
 	if (row+len<boardRow && row>=0 && col<boardCol && col>=0) {
 	    int r = row, c = col;
-	    boolean canAdd = true;
+	    boolean canAdd = false;
 	    for (int counter=0; counter<len; counter++) {
-		if (board[r+counter][c] != '.') {
-		    canAdd = false;
+		char item = board[r+counter][c];
+		if (item == '.' || item == w.charAt(counter)) {
+		    canAdd = true;
 		    break;
 		}
 	    }
