@@ -1,5 +1,7 @@
 import java.lang.StringBuilder;
 import java.util.Random;
+import java.util.Scanner;
+import java.io.File;
 /**
  * Creates a word search puzzle
  *
@@ -9,6 +11,7 @@ public class WordSearch{
     private char[][] board;
     private int boardRow;
     private int boardCol;
+    private Random randInt = new Random();
 
     public WordSearch(int r, int c){
 	board = new char[r][c];
@@ -36,15 +39,15 @@ public class WordSearch{
 	return s;
     }
 
-    public void addWordH(String w,int row, int col){
+    public boolean addWordH(String w,int row, int col){
 	int len = w.length();
 	if (col+len<boardCol && col>=0 && row<boardRow && row>=0) {
 	    int r = row, c = col;
-	    boolean canAdd = false;
+	    boolean canAdd = true;
 	    for (int counter=0; counter<len; counter++) {
 		char item = board[r][c+counter];
-		if (item == '.' || item == w.charAt(counter)) {
-		    canAdd = true;
+		if (item != '.' && item != w.charAt(counter)) {
+		    canAdd = false;
 		    break;
 		}
 	    }
@@ -53,23 +56,26 @@ public class WordSearch{
 		    board[r][c+i] = w.charAt(i);
 		}
 	    }
+	    return canAdd;
+	} else {
+	    return false;
 	}
     }
 
-    public void addWordHR(String w, int row, int col) {
+    public boolean addWordHR(String w, int row, int col) {
 	String reverse = new StringBuilder(w).reverse().toString();
-	addWordH(reverse, row, col);
+	return (addWordH(reverse, row, col));
     }
 
-    public void addWordV(String w, int row, int col) {
+    public boolean addWordV(String w, int row, int col) {
 	int len = w.length();
 	if (row+len<boardRow && row>=0 && col<boardCol && col>=0) {
 	    int r = row, c = col;
-	    boolean canAdd = false;
+	    boolean canAdd = true;
 	    for (int counter=0; counter<len; counter++) {
 		char item = board[r+counter][c];
-		if (item == '.' || item == w.charAt(counter)) {
-		    canAdd = true;
+		if (item != '.' && item != w.charAt(counter)) {
+		    canAdd = false;
 		    break;
 		}
 	    }
@@ -78,23 +84,26 @@ public class WordSearch{
 		    board[r+i][c] = w.charAt(i);
 		}
 	    }
+	    return canAdd;
+	} else {
+	    return false;
 	}
     }
 
-    public void addWordVR(String w, int row, int col) {
+    public boolean addWordVR(String w, int row, int col) {
 	String reverse = new StringBuilder(w).reverse().toString();
-	addWordV(reverse, row, col);
+	return (addWordV(reverse, row, col));
     }
 
-    public void addWordDRD(String w, int row, int col) {
+    public boolean addWordDRD(String w, int row, int col) {
         int len = w.length();
 	if (row+len<boardRow && row>=0 && col+len<boardCol && col>=0) {
 	    int r = row, c = col;
-	    boolean canAdd = false;
+	    boolean canAdd = true;
 	    for (int counter=0; counter<len; counter++) {
 		char item = board[r+counter][c+counter];
-		if (item == '.' || item == w.charAt(counter)) {
-		    canAdd = true;
+		if (item != '.' && item != w.charAt(counter)) {
+		    canAdd = false;
 		    break;
 		}
 	    }
@@ -103,23 +112,26 @@ public class WordSearch{
 		    board[r+i][c+i] = w.charAt(i);
 		}
 	    }
+	    return canAdd;
+	} else {
+	    return false;
 	}
     }
 
-    public void addWordDRR(String w, int row, int col) {
+    public boolean addWordDRR(String w, int row, int col) {
 	String reverse = new StringBuilder(w).reverse().toString();
-	addWordDRD(reverse, row, col);
+	return (addWordDRD(reverse, row, col));
     }
 
-    public void addWordDLD(String w, int row, int col) {
+    public boolean addWordDLD(String w, int row, int col) {
 	int len = w.length();
 	if (row+len<boardRow && row>=0 && col-len<boardCol && col>=0) {
 	    int r = row, c = col;
-	    boolean canAdd = false;
+	    boolean canAdd = true;
 	    for (int counter=0; counter<len; counter++) {
 		char item = board[r+counter][c-counter];
-		if (item == '.' || item == w.charAt(counter)) {
-		    canAdd = true;
+		if (item != '.' && item != w.charAt(counter)) {
+		    canAdd = false;
 		    break;
 		}
 	    }
@@ -128,12 +140,15 @@ public class WordSearch{
 		    board[r+i][c-i] = w.charAt(i);
 		}
 	    }
+	    return canAdd;
+	} else {
+	    return false;
 	}
     }
 
-    public void addWordDLR(String w, int row, int col) {
+    public boolean addWordDLR(String w, int row, int col) {
 	String reverse = new StringBuilder(w).reverse().toString();
-	addWordDLD(reverse, row, col);
+	return (addWordDLD(reverse, row, col));
     }
 
     public void addWord() {
@@ -145,36 +160,64 @@ public class WordSearch{
 	    System.exit(0);
 	}
 	while (sc.hasNext()) {
-	    Random randInt = new Random();
 	    int caseNum = randInt.nextInt(7);
 	    String word = sc.next();
 	    int wordLen = word.length();
+	    boolean added = false;
 	    switch (caseNum) {
 	    case 0:
-		addWordH(word, randInt.nextInt(boardRow), randInt.nextInt(boardCol-wordLen));
+		while (!added) {
+		    added = addWordH(word, randInt.nextInt(boardRow), randInt.nextInt(boardCol-wordLen));
+		}
 		break;
 	    case 1:
-		addWordHR(word, randInt.nextInt(boardRow), randInt.nextInt(boardCol-wordLen));
+		while (!added) {
+		    added = addWordHR(word, randInt.nextInt(boardRow), randInt.nextInt(boardCol-wordLen));
+		}
 		break;
 	    case 2:
-		addWordV(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol));
+		while (!added) {
+		    added = addWordV(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol));
+		}
 		break;
 	    case 3:
-		addWordVR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol));
+		while (!added) {
+		    added = addWordVR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol));
+		}
 		break;
 	    case 4:
-		addWordDRD(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen));
+		while (!added) {
+		    added = addWordDRD(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen));
+		}
 		break;
 	    case 5:
-		addWordDLD(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen) + wordLen);
+		while (!added) {
+		    added = addWordDLD(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen) + wordLen);
+		}
 		break;
 	    case 6:
-		addWordDRR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen));
+		while (!added) {
+		    added = addWordDRR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen));
+		}
 		break;
 	    case 7:
-		addWordDLR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen) + wordLen);
+		while (!added) {
+		    added = addWordDLR(word, randInt.nextInt(boardRow-wordLen), randInt.nextInt(boardCol-wordLen) + wordLen);
+		}
 		break;
 	    default:
+	    }
+	}
+    }
+	
+    public void addFiller() {
+	for (int r=0;r<boardRow;r++) {
+	    for (int c=0;c<boardCol;c++) {
+		if (board[r][c] == '.') {
+		    String alphabet = "abcdefghijklmnopqrstuvwxyz";
+		    char filler = alphabet.charAt(randInt.nextInt(26));
+		    board[r][c] = filler;
+		}
 	    }
 	}
     }
