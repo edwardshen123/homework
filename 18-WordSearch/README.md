@@ -1,0 +1,1 @@
+I have finished writing the finished puzzle and solution to two text files. However, I haven't compressed the code yet.
