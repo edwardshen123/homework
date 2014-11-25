@@ -12,6 +12,7 @@ public class WordSearch{
 
     private char[][] board;
     private Random r = new Random();
+    private ArrayList<String> key = new ArrayList<String>();
     private ArrayList<String> wordList = new ArrayList<String>();
     private int boardCol;
     private int boardRow;
@@ -25,7 +26,19 @@ public class WordSearch{
 		board[i][j]='.';
 	    }
 	}
-	
+	Scanner sc = null;
+	try {
+	    sc = new Scanner(new File("words.txt"));
+	} catch (Exception e) {
+	    System.out.println("Cannot open words file");
+	    System.exit(0);
+	}
+	while (sc.hasNext()) {
+	    String word = sc.next();
+	    if (word.length() > 1) {
+		wordList.add(word);
+	    }
+	}
     }
     public WordSearch(){
 	this(30,30);
@@ -93,22 +106,22 @@ public class WordSearch{
     }
 
     public void constructSolution() {
-	Scanner sc = null;
 	PrintWriter pw = null;
 	try {
-	    sc = new Scanner(new File("DwordList.txt"));
 	    pw = new PrintWriter(new File("solution.txt"));
 	} catch (Exception e) {
 	    System.out.println("Can't open file");
 	    System.exit(0);
 	}
-	while (sc.hasNext()) {
-	    String word = sc.next();
+	int size = wordList.size();
+	int c = 0;
+	while (c < 20) {
+	    String word = wordList.get(r.nextInt(size));
 	    if (addWord(word)) {
-		wordList.add(word);
+		key.add(word);
+		c++;
 	    }
 	}
-	sc.close();
 	pw.write(toString());
 	pw.close();
     }
@@ -123,11 +136,11 @@ public class WordSearch{
 	}
 	addFiller();
 	String write = toString();
-	for (int i = 0; i < wordList.size() + 1; i++) {
+	for (int i = 0; i < key.size() + 1; i++) {
 	    if (i == 0) {
 		write+="Word Bank:\n";
 	    } else {
-		write+=wordList.get(i-1) + "  ";
+		write+=key.get(i-1) + "  ";
 		if (i%5==0) {
 		    write+="\n";
 		}
