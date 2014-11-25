@@ -1,5 +1,9 @@
 //Condensed addWord Codes from Mr.Zamasky
 import java.util.Random;
+import java.util.ArrayList;
+import java.io.PrintWriter;
+import java.io.File;
+import java.util.Scanner;
 /**
  * Creates a word search puzzle
  *
@@ -7,10 +11,15 @@ import java.util.Random;
 public class WordSearch{
 
     private char[][] board;
-    Random r = new Random();
+    private Random r = new Random();
+    private ArrayList<String> wordList = new ArrayList<String>();
+    private int boardCol;
+    private int boardRow;
     
     public WordSearch(int r, int c){
 	board = new char[r][c];
+	boardRow = r;
+	boardCol = c;
 	for (int i = 0; i < board.length; i++) {
 	    for (int j = 0; j < board[i].length; j++) {
 		board[i][j]='.';
@@ -33,7 +42,6 @@ public class WordSearch{
 	}
 	return s;
     }
-
 		
     public boolean addWordHelper(String w,int row, int col,int deltaRow, int deltaCol){
 	int r = row, c = col;
@@ -71,32 +79,67 @@ public class WordSearch{
 	    return false;
 	return addWordHelper(w,row,col,deltaRow,deltaCol);
     }
-	
+
+    public void addFiller() {
+	for (int row=0;row<boardRow;row++) {
+	    for (int col=0;col<boardCol;col++) {
+		if (board[row][col] == '.') {
+		    String alphabet = "abcdefghijklmnopqrstuvwxyz";
+		    char filler = alphabet.charAt(r.nextInt(26));
+		    board[row][col] = filler;
+		}
+	    }
+	}
+    }
+
+    public void constructSolution() {
+	Scanner sc = null;
+	PrintWriter pw = null;
+	try {
+	    sc = new Scanner(new File("DwordList.txt"));
+	    pw = new PrintWriter(new File("solution.txt"));
+	} catch (Exception e) {
+	    System.out.println("Can't open file");
+	    System.exit(0);
+	}
+	while (sc.hasNext()) {
+	    String word = sc.next();
+	    if (addWord(word)) {
+		wordList.add(word);
+	    }
+	}
+	sc.close();
+	pw.write(toString());
+	pw.close();
+    }
+    
+    public void constructPuzzle() {
+	PrintWriter pw = null;
+	try {
+	    pw = new PrintWriter(new File("puzzle.txt"));
+	} catch (Exception e) {
+	    System.out.println("Cannot write to file");
+	    System.exit(0);
+	}
+	addFiller();
+	String write = toString();
+	for (int i = 0; i < wordList.size() + 1; i++) {
+	    if (i == 0) {
+		write+="Word Bank:\n";
+	    } else {
+		write+=wordList.get(i-1) + "  ";
+		if (i%5==0) {
+		    write+="\n";
+		}
+	    }
+	}
+	pw.write(write);
+	pw.close();
+    }
 
     public static void main(String[] args) {
 	WordSearch w = new WordSearch(20,20);
-	System.out.println(w);
-	//w.addWord("hello",3,5,1,0);
-	//w.addWord("hello",10,10,-1,0);
-	//w.addWord("down",2,2,1,1);
-	//w.addWord("upply",15,15,-1,-1);
-	//w.addWord("diagoneway",25,13,-1,1);
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	w.addWord("one");
-	
-
-	
-	//w.addWordH("look",3,8,);
-	//w.addWordH("look",3,5);
-	//w.addWordH("hello",100,5);
-	//w.addWordH("hello",30,555);
-				
-	System.out.println(w);
+	w.constructSolution();
+	w.constructPuzzle();
     }
 }
