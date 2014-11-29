@@ -17,7 +17,7 @@ public class Sarray {
     }
     public void add(int index, int item) {
 	if (isArrayOverflow(index)) {
-	    throw new ArrayIndexOutOfBoundException();
+	    throw new ArrayIndexOutOfBoundsException();
 	} else {
 	    arrayGrowth();
 	    for (int location = data.length - 1; location > index; location--) {
@@ -28,14 +28,14 @@ public class Sarray {
     }
     public Object get(int index) {
 	if (isArrayOverflow(index)) {
-	    throw new ArrayIndexOutOfBoundException();
+	    throw new ArrayIndexOutOfBoundsException();
 	} else {
 	    return data[index];
 	}
     }
-    public void String set(int index, int item) {
+    public void set(int index, int item) {
 	if (isArrayOverflow(index)) {
-	    throw new ArrayIndexOutOfBoundException();
+	    throw new ArrayIndexOutOfBoundsException();
 	} else {
 	    data[index] = item;
 	    lastShift(index);
@@ -46,7 +46,7 @@ public class Sarray {
     }
     public Object remove(int index) {
 	if (isArrayOverflow(index)) {
-	    throw new ArrayIndexOutOfBoundException();
+	    throw new ArrayIndexOutOfBoundsException();
 	} else {
 	    Object item = data[index];
 	    Object[] temp = new Object[data.length - 1];
@@ -93,14 +93,14 @@ public class Sarray {
 	System.out.println(list.add(1));
 	System.out.println(list.add(2));
 	System.out.println(list.add(3));
-	System.out.println(list.add(11, 4));
-	System.out.println(list.set(4, 3));
-	System.out.println(list.set(2, 4));
+	list.add(5, 4);
+	list.set(4, 3);
+	list.set(2, 4);
 	System.out.println(list.size());
 	System.out.println(list.get(2));
 	System.out.println(list.get(5));
-	System.out.println(list.get(11));
-	} catch (ArrayOutOfBoundException e) {
+	System.out.println(list.get(10));
+	} catch (ArrayIndexOutOfBoundsException e) {
 	    System.out.println(e);
 	} catch (Exception e) {
 	    System.out.println(e);

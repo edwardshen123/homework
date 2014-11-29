@@ -1,4 +1,4 @@
-//Condensed addWord Codes from Mr.Zamasky
+//Add code for must overlap
 import java.util.Random;
 import java.util.ArrayList;
 import java.io.PrintWriter;
@@ -35,7 +35,7 @@ public class WordSearch{
 	}
 	while (sc.hasNext()) {
 	    String word = sc.next();
-	    if (word.length() > 1) {
+	    if (word.length() > 8 && word.contains("z")) {
 		wordList.add(word);
 	    }
 	}
