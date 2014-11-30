@@ -1,1 +1,2 @@
-I have finished writing the finished puzzle and solution to two text files. However, I haven't compressed the code yet.
+I have finished writing the finished puzzle and solution to two text files.
+Also compressed the code, using code from class.
