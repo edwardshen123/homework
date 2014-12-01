@@ -1,10 +1,10 @@
 public class Sarray {
 
-    private Object[] data;
+    private String[] data;
     private int last;
 
     public Sarray() {
-	data = new Object[10];
+	data = new String[10];
 	last = 0;
     }
 
@@ -15,18 +15,19 @@ public class Sarray {
 	set(last, item);
 	return true;
     }
-    public void add(int index, String item) {
+    public boolean add(int index, String item) {
 	if (isArrayOverflow(index)) {
-	    throw new ArrayIndexOutOfBoundsException();
+	    return false;
 	} else {
 	    arrayGrowth();
 	    for (int location = data.length - 1; location > index; location--) {
 		data[location] = data[location - 1];
 	    }
 	    set(index, item);
+	    return true;
 	}
     }
-    public Object get(int index) {
+    public String get(int index) {
 	if (isArrayOverflow(index)) {
 	    throw new ArrayIndexOutOfBoundsException();
 	} else {
@@ -44,12 +45,12 @@ public class Sarray {
     public int size() {
 	return data.length;
     }
-    public Object remove(int index) {
+    public String remove(int index) {
 	if (isArrayOverflow(index)) {
 	    throw new ArrayIndexOutOfBoundsException();
 	} else {
-	    Object item = data[index];
-	    Object[] temp = new Object[data.length - 1];
+	    String item = data[index];
+	    String[] temp = new String[data.length - 1];
 	    int dataCounter = 0;
 	    for (int counter = 0; counter < temp.length; counter++) {
 		if (counter == index) {
@@ -77,33 +78,13 @@ public class Sarray {
 	return (index >= data.length || index < 0);
     }
     public void arrayGrowth() {
-	Object[] temp = new Object[data.length + 1];
+	String[] temp = new String[data.length + 1];
 	copy(temp);
 	data = temp;
     }
-    public void copy(Object[] newArray) {
+    public void copy(String[] newArray) {
 	for (int c = 0; c < data.length; c++) {
 	    newArray[c] = data[c];
-	}
-    }
-
-    public static void main(String[] args) {
-	Sarray list = new Sarray();
-	try {
-	System.out.println(list.add("hi"));
-	System.out.println(list.add("there"));
-	System.out.println(list.add("world"));
-	list.add(9, "no");
-	list.set(4, "more");
-	list.set(2, "numbers");
-	System.out.println(list.size());
-	System.out.println(list.get(2));
-	System.out.println(list.get(5));
-	System.out.println(list.get(9));
-	} catch (ArrayIndexOutOfBoundsException e) {
-	    System.out.println(e);
-	} catch (Exception e) {
-	    System.out.println(e);
 	}
     }
 }
