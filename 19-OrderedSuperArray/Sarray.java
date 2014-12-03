@@ -10,7 +10,7 @@ public class Sarray {
 
     public boolean add(String item) {
 	if (isArrayOverflow()) {
-	    arrayGrowth(1);
+	    arrayGrowth();
 	}
 	set(last, item);
 	return true;
@@ -18,8 +18,9 @@ public class Sarray {
     public boolean add(int index, String item) {
 	if (isArrayOverflow(index)) {
 	    return false;
-	} else if (!(data[data.length - 1] == null)) {
-	    arrayGrowth(1);
+	}
+	if (!(get(data.length-1) == null)) {
+	    arrayGrowth();
 	}
 	for (int location = data.length - 1; location > index; location--) {
 	    data[location] = data[location - 1];
@@ -77,8 +78,8 @@ public class Sarray {
     public boolean isArrayOverflow(int index) {
 	return (index >= data.length || index < 0);
     }
-    public void arrayGrowth(int inc) {
-	String[] temp = new String[data.length + inc];
+    public void arrayGrowth() {
+	String[] temp = new String[data.length + 1];
 	copy(temp);
 	data = temp;
     }
