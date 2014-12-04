@@ -89,16 +89,33 @@ public class Sarray {
 	}
     }
     public void shift(int n) {
-	String N = a[n];
-	for (int i=n; i>0 && N.compareTo(a[i-1]) < 0; i--) {
-	    a[i] = a[i-1];
+	String N = data[n];
+	int i;
+	for (i=n; i>0 && N.compareTo(data[i-1]) < 0; i--) {
+	    data[i] = data[i-1];
 	}
-	a[i] = N;
+	data[i] = N;
     }
     //Uses insertion sort
     public void iSort() {
 	for (int c=0; c<data.length; c++) {
 	    shift(c);
 	}
+    }
+    public static void main(String[] args) {
+	Sarray s = new Sarray();
+	s.add("me");
+	s.add("zen");
+	s.add("hen");
+	s.add("meh");
+	s.add("hey");
+	s.add("why");
+	s.add("lel");
+	s.add("try");
+	s.add("plox");
+	s.add("eeee");
+	s.add("clk");
+	s.iSort();
+
     }
 }
