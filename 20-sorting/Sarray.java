@@ -1,3 +1,4 @@
+import java.util.Arrays;
 public class Sarray {
 
     private String[] data;
@@ -102,6 +103,24 @@ public class Sarray {
 	    shift(c);
 	}
     }
+    //Uses selection sort
+    public void sSort() {
+	for (int i=0; i<data.length; i++) {
+	    int minIndex=i;
+	    for (int c=i+1; c<data.length; c++) {
+		String minVal = data[minIndex];
+		if (minVal.compareTo(data[c])>0) {
+		    minIndex=c;
+		}
+	    }
+	    String temp = data[i];
+	    data[i] = data[minIndex];
+	    data[minIndex] = temp;
+	}
+    }
+    public String toString() {
+	return Arrays.toString(data);
+    }
     public static void main(String[] args) {
 	Sarray s = new Sarray();
 	s.add("me");
@@ -115,7 +134,9 @@ public class Sarray {
 	s.add("plox");
 	s.add("eeee");
 	s.add("clk");
-	s.iSort();
+	System.out.println(s.toString());
+	s.sSort();
+	System.out.println(s.toString());
 
     }
 }
