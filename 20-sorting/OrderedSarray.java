@@ -14,12 +14,11 @@ public class OrderedSarray extends Sarray {
       Code breaks add method: throws ArrayIndexOutOfBoundsException
       The super.add(index, item) calls upon the set method not in superclass but subclass
     */
-    /*
+    //Set super method as private
     public void set(int index, String item) {
 	remove(index);
 	add(item);
     }
-    */
 
     public static void main(String[] args) {
 	OrderedSarray list = new OrderedSarray();

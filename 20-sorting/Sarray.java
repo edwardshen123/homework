@@ -36,7 +36,7 @@ public class Sarray {
 	    return data[index];
 	}
     }
-    public void set(int index, String item) {
+    private void set(int index, String item) {
 	if (isArrayOverflow(index)) {
 	    throw new ArrayIndexOutOfBoundsException();
 	} else {
@@ -116,6 +116,12 @@ public class Sarray {
 	    String temp = data[i];
 	    data[i] = data[minIndex];
 	    data[minIndex] = temp;
+	}
+    }
+    //Uses bubble sort
+    public void bSort() {
+	for (int i=0; i<data.length;i++) {
+	    
 	}
     }
     public String toString() {
