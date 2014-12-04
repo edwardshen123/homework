@@ -88,4 +88,17 @@ public class Sarray {
 	    newArray[c] = data[c];
 	}
     }
+    public void shift(int n) {
+	String N = a[n];
+	for (int i=n; i>0 && N.compareTo(a[i-1]) < 0; i--) {
+	    a[i] = a[i-1];
+	}
+	a[i] = N;
+    }
+    //Uses insertion sort
+    public void iSort() {
+	for (int c=0; c<data.length; c++) {
+	    shift(c);
+	}
+    }
 }
