@@ -121,7 +121,13 @@ public class Sarray {
     //Uses bubble sort
     public void bSort() {
 	for (int i=0; i<data.length;i++) {
-	    
+	    for (int i2=0; i2<data.length-1;i2++) {
+		if (data[i2].compareTo(data[i2+1])>0) {
+		    String temp = data[i2];
+		    data[i2] = data[i2+1];
+		    data[i2+1] = temp;
+		}
+	    }
 	}
     }
     public String toString() {
@@ -143,6 +149,5 @@ public class Sarray {
 	System.out.println(s.toString());
 	s.sSort();
 	System.out.println(s.toString());
-
     }
 }
