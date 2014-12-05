@@ -146,8 +146,8 @@ public class Sarray {
 	s.add("plox");
 	s.add("eeee");
 	s.add("clk");
-	System.out.println(s.toString());
+	//Selection Sort: 0.067s
+	//Insertion Sort: 0.069s
 	s.sSort();
-	System.out.println(s.toString());
     }
 }
