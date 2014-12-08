@@ -146,8 +146,8 @@ public class Sarray {
 	s.add("plox");
 	s.add("eeee");
 	s.add("clk");
-	//Selection Sort: 0.067s
-	//Insertion Sort: 0.069s
+	//Selection Sort: 0.067s (n^2 + n)/2
+	//Insertion Sort: 0.069s ~n^2
 	s.sSort();
     }
 }
