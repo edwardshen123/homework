@@ -130,24 +130,47 @@ public class Sarray {
 	    }
 	}
     }
+    public void builtIn() {
+	Arrays.sort(data);
+    }
     public String toString() {
 	return Arrays.toString(data);
     }
     public static void main(String[] args) {
 	Sarray s = new Sarray();
-	s.add("me");
-	s.add("zen");
-	s.add("hen");
-	s.add("meh");
-	s.add("hey");
-	s.add("why");
-	s.add("lel");
-	s.add("try");
-	s.add("plox");
-	s.add("eeee");
-	s.add("clk");
+	/*
+	s.add("me");s.add("zen");s.add("hen");s.add("meh");s.add("hey");s.add("why");s.add("lel");s.add("try");s.add("plox");s.add("eeee");s.add("clk");
+	*/
 	//Selection Sort: 0.067s (n^2 + n)/2
 	//Insertion Sort: 0.069s ~n^2
-	s.sSort();
+	//Bubble Sort: 0.068s
+	//Built-In Sort: 0.061s
+	/*
+	s.add("ame");s.add("compare");s.add("exist");s.add("free");s.add("grep");s.add("have");s.add("jim");s.add("kimchi");s.add("lots");s.add("of");
+	*/
+	//Selection: 0.067s
+	//Insertion: 0.063s
+	//Bubble: 0.067s
+	//Built-In Sort: 0.065s
+	/*
+        s.add("jim");s.add("compare");s.add("exist");s.add("free");s.add("grep");s.add("have");s.add("ame");s.add("kimchi");s.add("lots");s.add("of");
+	*/
+	//Selection: 0.064s
+	//Insertion: 0.065s
+	//Bubble: 0.063s
+	//Built-In Sort: 0.098s
+	/*
+	s.add("ame");s.add("compare");s.add("exist");s.add("free");s.add("grep");s.add("jim");s.add("have");s.add("kimchi");s.add("lots");s.add("of");
+	*/
+	//Selection: 0.065s
+	//Insertion: 0.065s
+	//Bubble: 0.066s
+	/*
+	s.add("ame");s.add("compare");s.add("lots");s.add("free");s.add("grep");s.add("kimchi");s.add("exist");s.add("have");s.add("jim");s.add("of");
+	*/
+	//Selection: 0.065s
+	//Insertion: 0.067s
+	//Bubble: 0.066s
+	s.builtIn();
     }
 }
