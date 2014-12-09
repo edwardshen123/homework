@@ -21,9 +21,20 @@ public class Interval {
 	low = l;
 	high = h;
     }
-
+    public int getLow() {
+	return low;
+    }
+    public int getHigh() {
+	return high;
+    }
     //add compareTo method
-
+    public int compareTo(Interval other) {
+	if (low == other.getLow()) {
+	    return high - other.getHigh();
+	} else {
+	    return low - other.getLow();
+	}
+    }
     public String toString() {
 	return "[" + low + "," + high + "]";
     }
@@ -33,6 +44,7 @@ public class Interval {
 	for (int i=0; i<interArry.length; i++) {
 	    interArry[i] = new Interval();
 	}
+	System.out.println(interArry[1].compareTo(interArry[2]));
 	System.out.println(Arrays.toString(interArry));
     }
 }
