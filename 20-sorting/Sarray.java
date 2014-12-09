@@ -165,12 +165,14 @@ public class Sarray {
 	//Selection: 0.065s
 	//Insertion: 0.065s
 	//Bubble: 0.066s
+	//Built-In Sort:
 	/*
 	s.add("ame");s.add("compare");s.add("lots");s.add("free");s.add("grep");s.add("kimchi");s.add("exist");s.add("have");s.add("jim");s.add("of");
 	*/
 	//Selection: 0.065s
 	//Insertion: 0.067s
 	//Bubble: 0.066s
+	//Built-In Sort:
 	s.builtIn();
     }
 }
