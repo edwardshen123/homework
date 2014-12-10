@@ -1,7 +1,22 @@
 import java.util.Random;
 import java.util.Arrays;
 
-public class Interval {
+public class Interval implements Comparable {
+
+    //Interface: a specification that lists method much like abstract class & methods
+    /*
+      interface Name {
+        method signature is placed here:
+        pub/priv return-type methodName(para);
+      }
+     */
+
+    /* Built-in Comparable interface
+    interface Comparable{
+	public int compareTo(object other);
+    }
+    */
+    // A class that implements an interface must define all the methods in the interface. You can only extend 1 class but can implement multiple interfaces
     
     //Static does not belong to an instance but the class (Math.sqrt: sqrt is a static method of the math class, thus no need for a new instance of Math)
     //Static variables is shared among the instances of the class, thus incrementing the variable in one instance will have it increment in all instances
@@ -28,11 +43,13 @@ public class Interval {
 	return high;
     }
     //add compareTo method
-    public int compareTo(Interval other) {
-	if (low == other.getLow()) {
-	    return high - other.getHigh();
+    public int compareTo(Object other) {
+	//cast other to the appropriate type and store in a local variable for convenience
+	Interval ot = (Interval)other;
+	if (low == ot.getLow()) {
+	    return high - ot.getHigh();
 	} else {
-	    return low - other.getLow();
+	    return low - ot.getLow();
 	}
     }
     public String toString() {
