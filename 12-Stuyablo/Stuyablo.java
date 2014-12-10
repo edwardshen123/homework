@@ -8,6 +8,10 @@ public class Stuyablo {
 	String name = user_input.next();
 	Warrior w1 = new Warrior(name);
 	Mob xeno = new Mob();
+	baseChar[] basic = {w1, xeno};
+	Arrays.sort(basic);
+	System.out.println(Arrays.toString(basic));
+	/*
 	while (true) {
 	    System.out.println("Moves: ");
 	    System.out.println("attack || slash || longSlash");
@@ -43,6 +47,7 @@ public class Stuyablo {
 		break;
 	    }
 	}
+	*/
     
     }
 }

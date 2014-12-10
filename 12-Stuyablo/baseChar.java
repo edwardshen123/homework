@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class baseChar {
+public class baseChar implements Comparable {
     
     private String name;
     private int Health;
@@ -43,5 +43,9 @@ public class baseChar {
     public boolean canHit(int x) {
 	Random randint = new Random();
 	return (x >= randint.nextInt(10));
+    }
+    public int compareTo(Object other) {
+	baseChar ot = (baseChar)other;
+	return this.name.compareTo(ot.toString());
     }
 }
