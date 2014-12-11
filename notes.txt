@@ -1,0 +1,29 @@
+Sorting:
+	1) Insertion Sort
+		take the Nth variable and shift it to the right location.
+		Then shift all other variables.
+	2) Selection Sort
+		Start with a subArray of 1 and sort.
+		Repeat with a subArray of 2, 3, 4...n.
+	3) Bubble Sort
+		Loop through array 2 at a time to flip if not in order. 
+
+Searching:
+	Character c = new Character("fred")
+	Search(ArrayList<Character> A, C)
+
+	1) Send in string w/ name
+	2) Send in an instance of class w/ name set
+
+	Linear Search:
+		[a, b, c, d, e...] going through one at a time.
+		(loop through array one at a time)
+
+	
+	if list is sorted:
+		low = 0
+		h = length
+		start at middle. (i = (low + h)/2)
+		check if the same
+		if not:
+			move high or low above or below mid
