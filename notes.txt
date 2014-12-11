@@ -19,7 +19,7 @@ Searching:
 		[a, b, c, d, e...] going through one at a time.
 		(loop through array one at a time)
 
-	
+	Binary Search:
 	if list is sorted:
 		low = 0
 		h = length
