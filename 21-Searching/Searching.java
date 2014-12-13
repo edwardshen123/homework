@@ -47,20 +47,33 @@ public class Searching {
     }
     public static Comparable rbSearch(Comparable item, int low, int high) {
 	int mid = (low + high)/2;
-	if (low == high) {
+	if (high==low) {
 	    return null;
 	}
 	if (item.compareTo(a[mid]) > 0) {
 	    low = mid + 1;
-	    rbSearch(item, low, high);
+	    return rbSearch(item, low, high);
 	} else if (item.compareTo(a[mid]) < 0) {
 	    high = mid;
-	    rbSearch(item, low, high);
+	    return rbSearch(item, low, high);
 	} else {
 	    return item;
 	}
     }
 
     public static void main(String[] args) {
+	Searching s = new Searching(10);
+	for (int c=0; c<10; c++) {
+	    s.addItem(c);
+	}
+	/*
+	System.out.println(iSearch(3));
+	System.out.println(bSearch(3));
+	System.out.println(rbSearch(3));
+	System.out.println(iSearch(-1));
+	System.out.println(bSearch(-1));
+	System.out.println(rbSearch(-1));
+	*/
+	System.out.println(rbSearch(11));
     }
 }
