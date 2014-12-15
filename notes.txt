@@ -27,3 +27,41 @@ Searching:
 		check if the same
 		if not:
 			move high or low above or below mid
+
+Items|Binary|Linear
+1|1|1
+2|2|2
+4|2|4
+8|3|8
+16|4|16
+32|5|32
+64|6|64
+
+Binary Relationship
+#|Binary
+n|log(2) n
+
+Computation Speeds
+log(2) n
+n
+n^2
+n^3
+2^n ~ n!
+
+Linear Search: subtract 1 item at a time
+Binary Search: divide out a chuck at a time
+
+kn vs n^2 + k/g(n)
+
+Interfaces: A specification that lists method much like abstract class & methods
+public interface Name {
+  method signatures is placed here:
+  pub/priv return-type methodName(para);
+}
+
+A class that implements an interface must define all the methods
+in the interface. You can only extend one class but can implement multiple
+interfaces.
+
+Static: does not belong to an instance but the class
+(both variables and methods)

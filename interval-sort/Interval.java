@@ -5,7 +5,7 @@ public class Interval implements Comparable {
 
     //Interface: a specification that lists method much like abstract class & methods
     /*
-      interface Name {
+      public interface Name {
         method signature is placed here:
         pub/priv return-type methodName(para);
       }
