@@ -1,0 +1,33 @@
+import java.util.Random;
+
+public class Arraystuff {
+    
+    private int[] a;
+    private Random rnd.
+
+    //Final = can't change value
+    public final int final_example = 123;
+
+    public Arraystuff() {
+	this(100);
+    }
+    public Arraystuff(int n) {
+	rnd = new Random();
+	a = new int[n];
+	for (int c = 0; c < n; c++) {
+	    a[c] = 75 + rnd.nextInt(c);
+	}
+    }
+    public String toString() {
+	String s = "";
+	for (int c = 0; c < a.length; c++) {
+	    s += a[c] + ", ";
+	}
+	return s;
+    }
+
+    public static void main(String[] args) {
+	Arraystuff s = new Arraystuff();
+	System.out.println(as);
+    }
+}
