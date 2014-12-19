@@ -18,6 +18,8 @@ public class mineGui extends JFrame {
     
     private class Key implements KeyListener {
 	public void keyPressed(KeyEvent event) {
+	    switch (event.getSource()):
+		case
 	}
 	public void keyReleased(KeyEvent event) {
 	}
