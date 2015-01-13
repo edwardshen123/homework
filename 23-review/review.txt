@@ -1,0 +1,9 @@
+Machine.java
+What is Sprices? : Line 9
+Have comments for abreviated variables : Line 10 & 11
+
+For Machine.java, overall the structure and content of the code is easily readable
+and understandable. There are only minor faults with the code. First, there are
+special terms which the coder put in without placing a comment that defines the name.
+Second there are abreviated variables that isn't un-abreviated in the comments.
+However, other than those problems, the code is great.
